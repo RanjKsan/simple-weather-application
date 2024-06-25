@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="icon-weather.png">
+    <script src="script.js" defer></script>
+    <title>Weather Report</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-attachment: fixed;
+            background-size: cover;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .head h1 {
+            margin: 0;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .head h6 {
+            margin: 0;
+            font-size: 1em;
+            font-weight: normal;
+            color: #ddd;
+        }
+
+        .weather-report input,
+        .weather-report button {
+            padding: 12px;
+            margin: 12px 0;
+            width: calc(100% - 24px);
+            border: none;
+            border-radius: 8px;
+        }
+
+        .weather-report input {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .weather-report button {
+            background: rgba(255, 255, 255, 0.7);
+            color: #333;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .weather-report button:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .total {
+            margin-top: 20px;
+        }
+
+        .details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .details h3,
+        .icon h2 {
+            margin: 10px 0;
+        }
+
+        .icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .head h1 {
+                font-size: 1.5em;
+            }
+
+            .head h6 {
+                font-size: 0.9em;
+            }
+
+            .weather-report input,
+            .weather-report button {
+                padding: 10px;
+                margin: 10px 0;
+            }
+
+            .details h3,
+            .icon h2 {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="head">
+            <h1>Simple Weather App</h1>
+            <h6>Based on OpenWeatherAPI</h6>
+        </div>
+        <div class="weather-report">
+            <input class="city-name" type="text" id="city" placeholder="Enter the city name">
+            <button class="search" onclick="getWeatherByCity()">Search</button>
+            <div class="separator"></div>
+            <button class="location" onclick="getWeatherByLocation()">Use Current Location</button>
+        </div>
+        <div class="total">
+            <div class="details">
+                <ul>
+                    <h3>WIND : <span id="wind">__</span> M/S</h3>
+                    <h3>HUMIDITY : <span id="humidity">__</span> %</h3>
+                    <h3>PRESSURE : <span id="pressure">__</span></h3>
+                </ul>
+            </div>
+            <div class="icon">
+                <h2 id="weather-desc">________</h2>
+                <h2 id="temperature">__ &deg;C</h2>
+                <h2 id="location">_____</h2>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
